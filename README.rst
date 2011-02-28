@@ -32,8 +32,10 @@ Steps::
 Prepare a working directory
 ---------------------------
 
-Steps::
-  $ export MYWORK=/path/to/mywork
+Steps (sub /path/to/work with a valid one)::
+
+   $ mkdir /path/to/work
+   $ export MYWORK=/path/to/mywork
 
 Set up a virtualenv
 -------------------
@@ -175,11 +177,4 @@ Steps::
     $ sudo /etc/init.d/supervisor start
     $ sudo supervisorctl
     djangoapp RUNNING pid 953, uptime 0:01:01
-
- 0:01:01
-
-
-  djangoapp RUNNING pid 953, uptime 0:01:01
-
-1
 
