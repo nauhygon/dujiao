@@ -1,0 +1,23 @@
+#!/bin/bash
+
+dir0=`pwd`
+
+# get script dir
+script=$0;
+script_dir=`dirname $script`
+
+# <venv>/<project>/deploy
+venv=$script_dir/../..
+proj=$script_dir/..
+
+# start virtualenv
+. $venv/bin/activate
+
+# start server
+cd $proj
+python manage.py run_gunicorn --workers=2
+
+# end virtualenv
+deactivate
+
+cd $dir0
