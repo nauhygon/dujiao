@@ -177,5 +177,3 @@ Steps::
     $ sudo supervisorctl
     djangoapp RUNNING pid 953, uptime 0:01:01
 
- uptime 0:01:01
-
