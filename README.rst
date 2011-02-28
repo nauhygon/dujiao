@@ -32,17 +32,16 @@ Steps::
 Prepare a working directory
 ---------------------------
 
-Steps (sub /path/to/work with a valid one)::
+Steps (sub /path/to/mywork with a valid one)::
 
-   $ mkdir /path/to/work
-   $ export MYWORK=/path/to/mywork
+   $ mkdir /path/to/mywork
 
 Set up a virtualenv
 -------------------
 
 Steps::
 
-   $ cd $MYWORK
+   $ cd /path/to/mywork
    $ virtualenv --no-site-packages --distribute myenv
    $ cd myenv
    $ . bin/activate
@@ -128,7 +127,7 @@ Configure Supervisor
 
 Steps::
 
-    $ cd $MYWORK/myenv/myproj/deploy
+    $ cd /path/to/mywork/myenv/myproj/deploy
 
     $ cat > run_gunicorn
 
@@ -177,4 +176,6 @@ Steps::
     $ sudo /etc/init.d/supervisor start
     $ sudo supervisorctl
     djangoapp RUNNING pid 953, uptime 0:01:01
+
+ uptime 0:01:01
 
