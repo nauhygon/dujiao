@@ -16,6 +16,7 @@ A step-by-step guide
 
 .. contents:: Table of Contents
 
+
 Create a Django project using Pinax
 ===================================
 
@@ -28,12 +29,18 @@ Steps::
    $ sudo apt-get build-dep python-imaging
    $ sudo easy_isntall virtualenv
 
+Prepare a working directory
+---------------------------
+
+Steps::
+  $ export MYWORK=/path/to/mywork
+
 Set up a virtualenv
 -------------------
 
 Steps::
 
-   $ cd ~
+   $ cd $MYWORK
    $ virtualenv --no-site-packages --distribute myenv
    $ cd myenv
    $ . bin/activate
@@ -46,6 +53,7 @@ Steps::
 
    $ pip install pinax yolk
    $ pinax-admin setup_project myproj
+
    $ cd myproj
    $ python manage.py syncdb
    $ python manage.py runserver 0.0.0.0:8000
@@ -118,9 +126,13 @@ Configure Supervisor
 
 Steps::
 
-    $ cd ~/myenv/myproj/deploy
+    $ cd $MYWORK/myenv/myproj/deploy
+
     $ cat > run_gunicorn
+
     #!/bin/bash
+
+    # A script to run myproj using Gunicorn
 
     dir0=`pwd`
 
@@ -149,8 +161,8 @@ Steps::
 
     $ cat > djangoapp.conf
     [program:djangoapp]
-    command=/home/nauhygon/myenv/myproj/deploy/run_gunicorn
-    directory=/home/nauhygon/myenv/myproj
+    command=/path/to/mywork/myenv/myproj/deploy/run_gunicorn
+    directory=/path/to/mywork/myenv/myproj
     user=www-data
     autostart=true
     autorestart=true
@@ -158,9 +170,16 @@ Steps::
     ^D
 
     $ cd /etc/supervisor/conf.d
-    $ sudo ln -s =/home/nauhygon/myenv/myproj/deploy/djangoapp.conf
+    $ sudo ln -s /path/to/mywork/myenv/myproj/deploy/djangoapp.conf
 
     $ sudo /etc/init.d/supervisor start
     $ sudo supervisorctl
     djangoapp RUNNING pid 953, uptime 0:01:01
+
+ 0:01:01
+
+
+  djangoapp RUNNING pid 953, uptime 0:01:01
+
+1
 
